@@ -7,21 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cointer.Data;
 using Cointer.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cointer.Controllers
 {
     public class ValuesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ValuesController(ApplicationDbContext context)
+        public ValuesController(ApplicationDbContext context,
+                                UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Values
         public async Task<IActionResult> Index()
         {
+            foreach(Value Value in _context.Value)
+            {
+                ViewData[Value.ValueID] = _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User) && c.ValueID == Value.ValueID).ToList().Count;
+            }
             return View(await _context.Value.ToListAsync());
         }
 

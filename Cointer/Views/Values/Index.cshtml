@@ -21,6 +21,9 @@
                 <th>
                     Add Coin
                 </th>
+                <th>
+                    Count
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -42,6 +45,9 @@
                         <input type="submit" value="Create" class="btn btn-default" />
                     </div>
                 </form>
+            </td>
+            <td>
+                @ViewData[item.ValueID]
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ValueID">Edit</a> |
