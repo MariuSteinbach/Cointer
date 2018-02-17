@@ -22,5 +22,9 @@ namespace Cointer.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Cointer.Models.Coin> Coin { get; set; }
+
+        public DbSet<Cointer.Models.Value> Value { get; set; }
     }
 }
