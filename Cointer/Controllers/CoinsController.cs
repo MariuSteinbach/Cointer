@@ -28,9 +28,19 @@ namespace Cointer.Controllers
         // GET: Coins
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Coin.ToListAsync());
+            return View(await _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User)).ToListAsync());
         }
 
+        // Get: api/coins
+        /*
+        [Route("api/coins")]
+        [Produces("application/json")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ApiIndex()
+        {
+            return Ok(await _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User)).ToListAsync());
+        }
+        */
         // GET: Coins/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -72,6 +82,21 @@ namespace Cointer.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(coin);
+        }
+
+        [HttpPost]
+        [Route("api/coins/create")]
+        public async Task<IActionResult> ApiCreate([FromBody]Coin coin)
+        {
+            if(ModelState.IsValid)
+            {
+                coin.OwnerID = HttpContext.User.Claims.First().Value;
+                coin.Added = DateTime.Now;
+                _context.Add(coin);
+                await _context.SaveChangesAsync();
+                return Ok(coin);
+            }
+            return BadRequest();
         }
 
         // GET: Coins/Edit/5

@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Cointer.Data;
 using Cointer.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cointer.Controllers
 {
+    [Authorize]
     public class ValuesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -31,6 +33,19 @@ namespace Cointer.Controllers
                 ViewData[Value.ValueID] = _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User) && c.ValueID == Value.ValueID).ToList().Count;
             }
             return View(await _context.Value.ToListAsync());
+        }
+
+        // GET: api/coins
+        [Route("api/coins")]
+        [Produces("application/json")]
+        public async Task<IActionResult> ApiCoins()
+        {
+            foreach (Value Value in _context.Value)
+            {
+                Value.Count = _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User) && c.ValueID == Value.ValueID).ToList().Count;
+                await _context.SaveChangesAsync();
+            }
+            return Ok(await _context.Value.ToListAsync());
         }
 
         // GET: Values/Details/5

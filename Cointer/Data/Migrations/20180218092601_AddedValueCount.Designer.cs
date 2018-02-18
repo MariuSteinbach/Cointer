@@ -11,9 +11,10 @@ using System;
 namespace Cointer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180218092601_AddedValueCount")]
+    partial class AddedValueCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,8 +98,6 @@ namespace Cointer.Data.Migrations
                     b.Property<int>("Count");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("OwnerID");
 
                     b.HasKey("ValueID");
 

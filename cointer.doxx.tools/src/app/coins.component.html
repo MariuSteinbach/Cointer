@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <mat-list role="list" *ngFor="let Coin of Coins">
+      <mat-list-item role="listitem">
+        <button mat-button (click)="Sub(Coin)">
+          -
+        </button>
+        {{
+        Coin.name
+        }}
+        {{
+        Coin.count
+        }}
+        <button mat-button (click)="Add(Coin.valueID)">
+          +
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>

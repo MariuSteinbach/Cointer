@@ -8,7 +8,9 @@ namespace Cointer.Models
     public class Value
     {
         public string ValueID { get; set; }
+        public string OwnerID { get; set; }
         public string Name { get; set; }
         public int Cents { get; set; }
+        public int Count { get; set; }
     }
 }
