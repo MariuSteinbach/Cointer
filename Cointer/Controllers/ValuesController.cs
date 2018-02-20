@@ -26,7 +26,6 @@ namespace Cointer.Controllers
         }
 
         // GET: Values
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             foreach(Value Value in _context.Value)
@@ -34,6 +33,14 @@ namespace Cointer.Controllers
                 ViewData[Value.ValueID] = _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User) && c.ValueID == Value.ValueID).ToList().Count;
             }
             return View(await _context.Value.ToListAsync());
+        }
+
+        // Get: api/values
+        [Route("api/values")]
+        [Produces("application/json")]
+        public async Task<IActionResult> ApiIndex()
+        {
+            return Ok(await _context.Value.Where(v => v.OwnerID == _userManager.GetUserId(User)).ToListAsync());
         }
 
         // GET: Values/Details/5

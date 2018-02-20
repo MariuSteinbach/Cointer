@@ -34,7 +34,6 @@ namespace Cointer.Controllers
         // Get: api/coins
         [Route("api/coins")]
         [Produces("application/json")]
-        [AllowAnonymous]
         public async Task<IActionResult> ApiIndex()
         {
             return Ok(await _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User)).ToListAsync());
