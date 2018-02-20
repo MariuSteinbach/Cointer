@@ -32,7 +32,6 @@ namespace Cointer.Controllers
         }
 
         // Get: api/coins
-        /*
         [Route("api/coins")]
         [Produces("application/json")]
         [AllowAnonymous]
@@ -40,7 +39,7 @@ namespace Cointer.Controllers
         {
             return Ok(await _context.Coin.Where(c => c.OwnerID == _userManager.GetUserId(User)).ToListAsync());
         }
-        */
+
         // GET: Coins/Details/5
         public async Task<IActionResult> Details(string id)
         {
