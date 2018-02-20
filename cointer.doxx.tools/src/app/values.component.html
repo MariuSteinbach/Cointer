@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <mat-list role="list" *ngFor="let Value of Values">
+      <mat-list-item role="listitem">
+        <button mat-button (click)="Sub(Value)">
+          -
+        </button>
+        {{
+        Value.name
+        }}
+        {{
+        Value.count
+        }}
+        <button mat-button (click)="Add(Value.valueID)">
+          +
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>

@@ -16,8 +16,8 @@ import { MatToolbarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
-import { CoinComponent } from './coin.component';
 import { CoinsComponent} from './coins.component';
+import { ValuesComponent } from './values.component'
 import { NavComponent } from './nav.component';
 import { RegisterComponent } from './register.component';
 import { LoginComponent} from './login.component';
@@ -29,12 +29,12 @@ import { AuthInterceptor} from './auth.interceptor';
 
 const routes = [
   {
-    path: 'coin',
-    component: CoinComponent
-  },
-  {
     path: 'coins',
     component: CoinsComponent
+  },
+  {
+    path: 'values',
+    component: ValuesComponent
   },
   {
     path: 'register',
@@ -50,8 +50,8 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CoinComponent,
     CoinsComponent,
+    ValuesComponent,
     NavComponent,
     RegisterComponent,
     LoginComponent

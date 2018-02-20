@@ -1,5 +1,6 @@
 <mat-toolbar>
   <button mat-button routerLink="/coins">Coins</button>
+  <button mat-button routerLink="/values">Values</button>
   <span class="alignRight"></span>
   <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/register">Register</button>
   <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/login">Login</button>
