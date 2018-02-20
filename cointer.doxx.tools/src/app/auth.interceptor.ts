@@ -9,12 +9,7 @@ export class AuthInterceptor implements HttpInterceptor{
 
   intercept(req, next) {
     return next.handle(req.clone({
-<<<<<<< HEAD
       headers: req.headers.set('Authorization': 'Bearer ' + localStorage.getItem('cointer.token'))
     }))
-=======
-      headers: req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('cointer.token'))
-  }))
->>>>>>> 346e44c80e6c61af2dad90b3b2dfdb1280849cf2
   }
 }
