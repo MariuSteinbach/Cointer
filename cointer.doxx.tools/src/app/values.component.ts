@@ -22,7 +22,7 @@ export class ValuesComponent {
   }
 
   Add(Value) {
-    this.api.Value(Value)
+    this.api.addCoin(Value)
   }
   Sub(Value) {
     console.log(Value, " was Subtracted.")

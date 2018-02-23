@@ -8,16 +8,14 @@ export class ApiService{
   constructor(private http: HttpClient) { }
 
   addCoin(Coin){
-    this.http.post('https://localhost:44363/api/coins/create', {valueID: Coin}).subscribe(res => {
-      console.log(res)
-    })
+    return this.http.post('https://cointer.steinbach.io/api/coins/create', {valueID: Coin})
   }
 
   getCoins(){
-    return this.http.get('https://localhost:44363/api/coins')
+    return this.http.get('https://cointer.steinbach.io/api/coins')
   }
 
   getValues() {
-    return this.http.get('https://localhost:44363/api/values')
+    return this.http.get('https://cointer.steinbach.io/api/values')
   }
 }

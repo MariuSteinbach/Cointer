@@ -1,23 +1,43 @@
-<mat-card>
-  <mat-card-content>
-    <mat-list role="list" *ngFor="let Coin of Coins">
-      <mat-list-item role="listitem">
-        <button mat-button (click)="Sub(Coin)">
-          -
-        </button>
-        {{
-        Coin.name
-        }}
-        {{
-        Coin.count
-        }}
-        <button mat-button (click)="Add(Coin.valueID)">
-          +
-        </button>
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-  <mat-card-actions>
-
-  </mat-card-actions>
-</mat-card>
+<div class="md-padding" layout-xs="column" layout="row">
+  <div class="coins-container" flex-xs flex-gt-xs="50" layout="column">
+    <div class="coin-container" *ngFor="let Value of Values">
+      <mat-card class="cardMargin">
+        <mat-card-header >
+          <mat-card-title>
+          <span class="mat-headline">
+            {{
+            Value.name
+            }}
+          </span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-progress-bar md-mode="determinate" value="{{(Value.coins.length / Coins.length * 100).toFixed(2)}}"></mat-progress-bar>
+          <span>{{Value.coins.length}} Coins are {{(Value.coins.length / Coins.length * 100).toFixed(2)}}% of {{Coins.length}} Coins</span>
+          <mat-progress-bar md-mode="determinate" value="{{((Value.coins.length * Value.cents) / Worth * 100).toFixed(2)}}"></mat-progress-bar>
+          <span>{{Value.coins.length * Value.cents / 100}}€ is {{((Value.coins.length * Value.cents / 100) / Worth * 100).toFixed(2)}}% of {{Worth / 100}} </span>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="Add(Value.valueID)" class="fullWidth">
+            +
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item *ngFor="let Coin of Value.coins" role="listitem">
+            {{Coin.added.getDate()}}.{{Coin.added.getMonth() + 1}}.{{Coin.added.getFullYear()}} {{Coin.added.getHours()}}:{{Coin.added.getMinutes()}}
+            <button mat-button (click)="Sub(Coin.coinID)">
+              -
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>

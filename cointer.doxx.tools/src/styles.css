@@ -5,6 +5,18 @@
   width: 100%;
 }
 
+mat-card {
+  min-width: 22%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 .alignRight {
   flex: 1 1 auto;
+}
+
+.coins-container {
+  display: flex;
+  flex-flow: row wrap;
 }

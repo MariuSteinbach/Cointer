@@ -14,13 +14,13 @@ export class AuthService {
   }
 
   register(Creds) {
-    this.http.post<any>('https://localhost:44363/account/apiregister', Creds).subscribe(res => {
+    this.http.post<any>('https://cointer.steinbach.io/account/apiregister', Creds).subscribe(res => {
       this.authenticate(res)
     })
   }
 
   login(Creds) {
-    this.http.post<any>('https://localhost:44363/account/apilogin', Creds).subscribe(res => {
+    this.http.post<any>('https://cointer.steinbach.io/account/apilogin', Creds).subscribe(res => {
       this.authenticate(res)
     })
   }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CoinComponent} from './coin.component';
 
 @Component({
   selector: 'app-root',

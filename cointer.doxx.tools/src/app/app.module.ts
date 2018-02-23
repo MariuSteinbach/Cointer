@@ -9,10 +9,16 @@ import {MatListModule} from '@angular/material/list';
 import { RouterModule} from '@angular/router';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material';
+import {MatButtonModule, MatGridTile} from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {
+  MatExpansionModule,
+  MatExpansionPanelHeader
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -67,7 +73,10 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule,
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   providers: [
     ApiService,
