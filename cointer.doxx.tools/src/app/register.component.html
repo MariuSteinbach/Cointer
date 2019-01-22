@@ -10,15 +10,19 @@
       <mat-form-field class="fullWidth">
         <input name="confirmpassword" matInput placeholder=" Confirm Password" type="password" formControlName="confirmpassword">
       </mat-form-field>
-      <button mat-raised-button color="primary" [disabled]="!form.valid">
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="onLoginClick(captchaRef)">
         Register
       </button>
-      <button
+      <!--button
         class="g-recaptcha"
         data-sitekey="6LcDEUgUAAAAAItNDRDbqLDeuK7C-eTSElk6b7y8"
         data-callback="onSuccess">
         Submit
-      </button>
+      </button-->
+      <re-captcha
+        #captchaRef="reCaptcha"
+        (resolved)="resolved($event)"
+        size="invisible"></re-captcha>
     </form>
   </mat-card-content>
   <mat-card-actions>

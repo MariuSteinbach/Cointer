@@ -1,0 +1,10 @@
+{
+    "host":
+    {
+        "protocol": "https",
+        "host": "cointer",
+        "domain": "steinbach",
+        "tld": "io",
+        "path": "api"
+    }
+}

@@ -20,6 +20,13 @@ import {
   MatExpansionPanelHeader
 } from '@angular/material';
 
+import {
+  RECAPTCHA_SETTINGS,
+  RecaptchaSettings,
+  RecaptchaLoaderService,
+  RecaptchaModule,
+} from 'ng-recaptcha';
+
 import { AppComponent } from './app.component';
 
 import { CoinsComponent} from './coins.component';
@@ -52,6 +59,7 @@ const routes = [
   }
 ]
 
+const globalSettings: RecaptchaSettings = {siteKey: '6LcDEUgUAAAAAItNDRDbqLDeuK7C-eTSElk6b7y8'};
 
 @NgModule({
   declarations: [
@@ -76,7 +84,8 @@ const routes = [
     MatToolbarModule,
     MatGridListModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    RecaptchaModule.forRoot()
   ],
   providers: [
     ApiService,
@@ -85,6 +94,10 @@ const routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: globalSettings
     }
   ],
   bootstrap: [AppComponent]
